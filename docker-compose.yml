@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  portfolio:
+    build: .
+    container_name: portafolio-adso
+    restart: always
+    ports:
+      - "8080:80"
+    networks:
+      - web-network
+
+  # Cloudflare Tunnel para despliegue local
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-tunnel
+    restart: always
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+    networks:
+      - web-network
+
+networks:
+  web-network:
+    driver: bridge
