@@ -38,5 +38,5 @@ export const footerData = {
   github: "https://github.com/",
   linkedin: "https://linkedin.com/",
   email: "correo@ejemplo.com",
-  location: "Bogotá, Colombia"
+  location: "Calí, Colombia"
 };

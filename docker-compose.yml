@@ -10,14 +10,12 @@ services:
     networks:
       - web-network
 
-  # Cloudflare Tunnel para despliegue local
+  # Cloudflare Quick Tunnel (trycloudflare) para despliegue local sin cuenta
   cloudflared:
     image: cloudflare/cloudflared:latest
     container_name: cloudflared-tunnel
     restart: always
-    command: tunnel run
-    environment:
-      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+    command: tunnel --url http://portfolio:80
     networks:
       - web-network
 
